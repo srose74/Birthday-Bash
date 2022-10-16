@@ -8,4 +8,4 @@ Sarah Rose
 
 ## Important Links
 
-    1. Heroku Project: (https://immense-shelf-12452.herokuapp.co)
+    1. Heroku Project: (https://immense-shelf-12452.herokuapp.com)
