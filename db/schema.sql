@@ -14,14 +14,6 @@ CREATE TABLE events (
     event_type TEXT NOT NULL
 );
 
-CREATE TABLE presents (
-    present_id SERIAL PRIMARY KEY,
-    present_name TEXT NOT NULL,
-    present_description TEXT NOT NULL,
-    cost INTEGER,
-    link TEXT
-);
-
 CREATE TABLE relation (
     relation_id SERIAL PRIMARY KEY,
     relation_type TEXT NOT NULL
@@ -38,7 +30,10 @@ CREATE TABLE gifts (
     gift_id SERIAL PRIMARY KEY,
     relationship_id INTEGER REFERENCES relationship(relationship_id),
     event_id INTEGER REFERENCES events(event_id),
-    present_id INTEGER REFERENCES presents(present_id),
+    present_name TEXT NOT NULL,
+    present_cost INTEGER,
+    present_image TEXT,
+    present_link TEXT,
     gift_date DATE,
     gift_status TEXT NOT NULL,
     CHECK (gift_status in ('PENDING', 'GIVEN', 'RATED'))
