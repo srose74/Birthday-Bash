@@ -3,15 +3,16 @@
     position: relative;
     flex-direction: row;
     height: 180px;
-    padding: 0;
+    padding: 0px;
     text-align: left;
     margin-bottom: 2px;
     font-size: 12pt;
     background-color: white;
+    transform: scale(0.8);
   }
+
   .RelationRow img {
-    width: 140px;
-    height: 180px;
+    width: 130px;
   }
 
   .RelationRow .actions {
@@ -25,7 +26,7 @@
   .RelationRow .action {
     display: flex;
     padding: 5px;
-    margin: 10px;
+    margin: 2px;
     align-items: center;
     justify-content: center;
     font-size: 12pt;
