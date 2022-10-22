@@ -6,11 +6,13 @@
   "author": "srose74 <srose74@icloud.com>",
   "license": "MIT",
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.10",
     "express": "^4.18.2"
   },
   "scripts": {
     "start": "node server.js",
     "heroku-postbuild": "cd client && yarn && yarn build"
-
   }
 }

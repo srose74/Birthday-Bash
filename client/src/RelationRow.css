@@ -1,0 +1,60 @@
+.RelationRow {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    height: 180px;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 2px;
+    font-size: 12pt;
+    background-color: white;
+  }
+  .RelationRow img {
+    width: 140px;
+    height: 180px;
+  }
+
+  .RelationRow .actions {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: row;
+    flex-grow: 1;
+  }
+  
+  .RelationRow .action {
+    display: flex;
+    padding: 5px;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 12pt;
+    font-weight: 800;
+    background-color: transparent;
+    background-color: #b12d64;
+    border-radius: 5px;
+  }
+  
+  .RelationRow .action:hover {
+    background-color: #64c6c5;
+  }
+  
+  .RelationRow .action:active {
+    background-color: rgb(40, 205, 197);
+  }
+  
+  .RelationRow .relation-summary {
+    flex-grow: 1;
+    padding: 0.5em 0.5em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .RelationRow .relation-summary > h3 {
+    margin-top: 0.35em;
+    margin-bottom: 0.35em;
+  }
+  
+  .RelationRow .relation-summary > p {
+    margin-top: 0;
+  }

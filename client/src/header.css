@@ -11,7 +11,7 @@ a {
 }
     
 h1 {
-    color: white;
+    color: #b12d64;
 }
   
 h2 {
@@ -27,7 +27,7 @@ h2 {
 button {
     padding: 10px 20px;
     float: right;
-    background-color: yellowgreen;
+    background-color: #64c6c5;
     color: white;
     border: none;
     margin-left: 20px;
@@ -44,9 +44,14 @@ button:hover {
     padding: 10px;
     border-bottom: 1px solid #d4d4d4;
     justify-content: space-between;
-    background-color: blueviolet;
+    background-color: white;
 }
-  
+
+#header-nav img {
+    width: 200px;
+    height: 50px;
+}
+
 #header-nav > h1 {
     display: inline-block;
     padding: 0 10px;
@@ -64,13 +69,13 @@ button:hover {
 #navlist > li {
     padding: 10px 30px;
     margin-right: 10px;
-    background-color: yellowgreen;
+    background-color: #64c6c5;
     color: white;
     border-radius: 3px;
 }
   
 #navlist > li:hover {
-    background-color: #3ed2ff;
+    background-color: #b12d64;
     cursor: pointer;
 }
   

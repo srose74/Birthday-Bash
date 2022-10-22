@@ -1,0 +1,97 @@
+.PresentPortal {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    justify-content: space-around;
+  }
+  
+  .PresentPortal .relation-list {
+    position: relative;
+    flex: 1 0 33.333333%;
+    height: 100%;
+    padding: 3.6em 0 0;
+    overflow-y: scroll;
+    background-color: #f0f0f0;
+  }
+  
+  .PresentPortal .relation-list > .section-title {
+    width: 33.333333%;
+    left: 0;
+  }
+  
+  .PresentPortal .relation-details {
+    flex: 0 1 66.666666%;
+    background-color: #f0f0f0;
+  }
+  
+  .PresentPortal .section-title {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: #777;
+    color: white;
+    text-align: center;
+    font-size: 0.75em;
+    padding: 0.5em;
+    margin: 0 0 0.1em;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  
+  .PresentPortal .relation-list-filters {
+    position: fixed;
+    top: 1.6em;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    width: 33.333333%;
+  }
+  
+  .PresentPortal .relation-list-filters {
+    flex-grow: 1;
+    background-color: #bbb;
+    color: white;
+    text-align: center;
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 0.5em;
+    margin: 0 0 0.1em;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border:none;
+  }
+  
+  .PresentPortal .relation-list-filters:hover {
+    background-color: hsl(177, 70%, 46%);
+  }
+  .PresentPortal .relation-list-filters:active {
+    background-color: rgb(40, 205, 197);
+  }
+  
+  .PresentPortal .relation-list-filters.is-active {
+    background-color: lightseagreen;
+  }
+  
+  .PresentPortal .section-count {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 0.25em 0.25em 0.25em 0.5em;
+    border-radius: 20%;
+    margin-left: 0.5em;
+    font-weight: bold;
+  }
+  
+  .PresentPortal .relation-details {
+    position: relative;
+    overflow-y: scroll;
+  }
+  
+  .PresentPortal .relation-details > .section-title {
+    left: 33.333333%;
+    width: 66.666666%;
+  }
