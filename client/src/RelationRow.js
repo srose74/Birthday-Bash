@@ -11,7 +11,7 @@ function RelationRow(props) {
                 <p>{props.relation_type}</p>
                 <div className="actions">
                     <p><Rating name="read-only" value={props.rating} readOnly/></p>
-                    <button className="action">
+                    <button onClick={(e)=>props.setRelation(e, props.id)} className="action">
                         <span className="material-icons">More info</span>
                     </button>
                 </div>

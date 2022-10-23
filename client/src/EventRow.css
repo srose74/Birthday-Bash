@@ -1,0 +1,21 @@
+.EventButton {
+    display: block;
+    margin: 2px;
+    background-color: #64c6c5;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12pt;
+    font-weight: 800;
+    float: left;
+
+}
+
+.EventButton:hover {
+    display: block;
+    margin: 2px;
+    background-color: #b12d64;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12pt;
+    font-weight: 800;
+}
