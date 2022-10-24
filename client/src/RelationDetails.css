@@ -66,5 +66,11 @@
   a:hover {
     color: #64c6c5;
   }
-
+  .RelationDetail .Present-details {
+    display: grid;
+    grid-template-columns: 270px 270px 270px;
+    gap: 20px;
+    background-color: transparent;
+    padding: 20px;
+  }
  

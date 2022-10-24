@@ -1,0 +1,48 @@
+.present-container{
+    display: grid;
+    grid-template-columns: 270px 270px 270px;
+    gap: 20px;
+    background-color: transparent;
+    padding: 20px;
+  }
+  
+ .present-box{ 
+    background-color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 5px;
+    width: 250px;
+    height: 370px;
+  }
+
+.present-box > img{
+    margin: 20px;
+    height: 130px;
+  }
+  
+.present-box > .EventButton {
+    display: block;
+    margin: 2px;
+    background-color: #64c6c5;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12pt;
+    font-weight: 800;
+    margin-left: 70px;
+}
+
+.present-box > .EventButton:hover {
+    display: block;
+    margin: 2px;
+    background-color: #b12d64;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12pt;
+    font-weight: 800;
+    margin-left: 70px;
+}
+
+
+ 

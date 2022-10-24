@@ -10,7 +10,7 @@ export const RELATIONDETAILS = {
             "presents" : [ 
                 {
                     "event" : "Birthday",
-                    "present_image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMHMUKSZOnGnV056ruPhB3k3j1LZYYn-Dxdg&usqp=CAU",
+                    "present_image" : "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQC0pMRenhE5KBUF5lgRACvdU7ApIzzJl6x384sBxonz25Pasx4xnZPZuyk5wO_jLjVFb-SRPB5BSs&usqp=CAc",
                     "present_name" : "Shimano Fishing Rod 7",
                     "gift_date" : "2022-03-09",
                     "gift_status" : "PENDING"
@@ -35,11 +35,26 @@ export const RELATIONDETAILS = {
             "presents" : [ 
                 {
                     "event" : "Birthday",
-                    "present_image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMHMUKSZOnGnV056ruPhB3k3j1LZYYn-Dxdg&usqp=CAU",
-                    "present_name" : "Shimano Fishing Rod 7",
+                    "present_image" : "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRuDKLxgrg_jWZAsH2u8V8FjWuiUzhd8GqPBr4K1f8_rKjGTn-KiZgbN3QbeHODMkoOm5lQ27E_YH8&usqp=CAc",
+                    "present_name" : "Doc Martens",
                     "gift_date" : "2022-03-09",
                     "gift_status" : "PENDING"
-                }]   
+                },
+                {
+                    "event" : "Birthday",
+                    "present_image" : "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRuDKLxgrg_jWZAsH2u8V8FjWuiUzhd8GqPBr4K1f8_rKjGTn-KiZgbN3QbeHODMkoOm5lQ27E_YH8&usqp=CAc",
+                    "present_name" : "Doc Martens",
+                    "gift_date" : "2022-03-09",
+                    "gift_status" : "PENDING"
+                },
+                {
+                    "event" : "Birthday",
+                    "present_image" : "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRuDKLxgrg_jWZAsH2u8V8FjWuiUzhd8GqPBr4K1f8_rKjGTn-KiZgbN3QbeHODMkoOm5lQ27E_YH8&usqp=CAc",
+                    "present_name" : "Doc Martens",
+                    "gift_date" : "2022-03-09",
+                    "gift_status" : "PENDING"
+                }
+            ]   
         },
         {
             "users_id" : 4,

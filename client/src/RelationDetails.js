@@ -3,7 +3,6 @@ import RelationDetailsHero from "./images/relation-details-hero.jpg";
 import { Rating } from '@mui/material';
 import EventRow from './EventRow';
 import PresentRow from './PresentRow';
-import { PRESENTS } from "./PRESENTS";
 import { useEffect, useState } from "react";
 
 
