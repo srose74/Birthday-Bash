@@ -6,10 +6,8 @@ function EventRow( { event, date } ){
     //const eventDate = new Date("2009-09-28");
     //console.log("ER-event-date", eventDate);
     return (
-        <div>
-            <button className='EventButton'>{event} : {date}</button>
-        </div>
-    )
+        <button className='EventButton'>{event} : {date}</button>
+        )
 }
 
 export default EventRow

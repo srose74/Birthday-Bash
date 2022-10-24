@@ -8,6 +8,7 @@ import RelationDetails from './RelationDetails';
 import './PresentPortal.css'
 
 function PresentPortal() {
+    //console.log("RELATION DETAILS", RELATIONDETAILS.details)
     const [selectedRelative, setSelectedRelative] = useState(RELATIONDETAILS.details[0]);
 
     const getSelectedRelation = (event, props) => {

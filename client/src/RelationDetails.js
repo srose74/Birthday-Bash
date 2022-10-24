@@ -8,16 +8,10 @@ import { useEffect, useState } from "react";
 
 
 function RelationDetails({id}) {
-    const { events, name, picture, rating, relation_type, users_id } = id;
+    //console.log("RD-id", id)
+    const { events, name, picture, rating, relation_type, users_id, presents } = id;
+    //console.log("RD-present", presents)
     const [selectedRelative, setSelectedRelative] = useState();
-    const [allPresents, setAllPresents] = useState([]);
-
-    //loads the selected user and all presents after render
-    // useEffect(() => {
-    //     setSelectedRelative(users_id);
-    //     setAllPresents(PRESENTS.present);
-    //     console.log("UE-RD", typeof allPresents);
-    // });
 
     return (
         <div className="RelationDetail is-hydrated">
@@ -25,7 +19,7 @@ function RelationDetails({id}) {
                 <img src={RelationDetailsHero} alt={name} />
             </figure>
             <div className='relation-meta'>
-                <p className='relation-detail-overview'>
+                <div className='relation-detail-overview'>
                     <img src={picture} className="relation-detail-poster" alt={name} />
                     <h1>{name}</h1>
                     <p>
@@ -38,26 +32,32 @@ function RelationDetails({id}) {
                         <a href='http://www.google.com'>Create New Event</a>
                     </p> 
                     {events.map((occasion, index)=>{
+                        console.log("RD-occasion", occasion)
                         return (
                             <EventRow
+                                index={index}
                                 event={occasion.event}
                                 date={occasion.Date}
                             ></EventRow>
                         )
                     })}
                       
-                </p>
+                </div>
             </div>
             <div className="Present-details">
-                    {PRESENTS.present.map((present, index) => {
-                        if(present.users_id === selectedRelative){
-                            return (
-                                <PresentRow
-                                    index={index}
-                                    event={present.event}
-                                ></PresentRow> 
-                            )    
-                        }
+                    {presents.map((present, index) => {
+                        console.log("RD-present", present)
+                             return (
+                                 <PresentRow
+                                     index={index}
+                                     event={present.event}
+                                     gift_date={present.gift_date}
+                                     gift_status={present.gift_status}
+                                     present_image={present.present_image}
+                                     present_name={present.present_name}
+                                 ></PresentRow> 
+                             )    
+         
                     })}
             </div>
         </div>

@@ -1,11 +1,12 @@
 import './PresentRow.css'
-import { Rating } from '@mui/material';
+import { imageListClasses, Rating } from '@mui/material';
 
-function PresentRow(props){
-    console.log("PR-props", props)
+function PresentRow({ event, present_image, present_name, gift_date, gift_status }){
+    console.log("PR-props", event, present_image, present_name, gift_date, gift_status)
     return (
         <div>
-            <h1>Hello World</h1>
+            <p>{present_name}</p>
+            <p>Testing</p>
         </div>
     )
 }
