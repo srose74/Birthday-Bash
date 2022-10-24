@@ -34,7 +34,7 @@ button {
 }
   
 button:hover {
-    background-color: purple;
+    background-color: #b12d64;
     cursor: pointer;
     color: white;
 }
@@ -71,7 +71,7 @@ button:hover {
     margin-right: 10px;
     background-color: #64c6c5;
     color: white;
-    border-radius: 5px;
+    border-radius: 50%;
 }
   
 #navlist > li:hover {
@@ -81,5 +81,24 @@ button:hover {
   
 #page {
     margin: 20px;
+}
+
+#circle-icon {
+    background: grey;
+    padding:30px;
+    border-radius: 50%;
+    list-style: none;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
+} 
+
+a:hover {
+    color: white;
 }
   

@@ -57,4 +57,14 @@
     height: 255px;
   }
 
+  a:link {
+    color: #b12d64;
+  }
+  a:visited {
+    color: #b12d64;
+  } 
+  a:hover {
+    color: #64c6c5;
+  }
+
  

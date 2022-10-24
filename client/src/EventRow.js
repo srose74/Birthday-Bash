@@ -10,8 +10,6 @@ function EventRow( { event, date } ){
             <button className='EventButton'>{event} : {date}</button>
         </div>
     )
-    
-
 }
 
 export default EventRow
