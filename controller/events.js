@@ -2,6 +2,8 @@ const db = require('../database/db.js')
 const express = require('express');
 const router = express.Router();
 
+//GET APIs -------------------->
+
 //this route is for testing purposes
 router.get("/api/test", (req, res) => {
     res.json({ result: "success" });
@@ -41,6 +43,18 @@ router.get('/api/relationsDetails/:id', (req, res) => {
   });
 })
 
+
+//this route gets all event_types based on a event_id
+//RETURNS ----------->
+//event_type
+router.get('/api/event-types', (req, res) => {
+    sql=`SELECT * FROM events`;
+
+    db.query(sql).then((dbRes)=> {
+      return res.json(dbRes.rows);
+    });  
+})
+
 //this route gets gifts for a particular relationship_id
 //RETURNS ----------->
 //gift_id, relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating, event_type
@@ -71,6 +85,23 @@ router.get('/api/events/:relationship_id', (req, res) => {
   });
 })
 
+//POST APIs -------------------->
 
+router.post('/api/event', (req,res) => {
+  const { event_id, relationship_id, event_date } = req.body;
+
+  const sql = `
+      INSERT INTO dates (event_id, relationship_id, event_date)
+      VALUES ($1, $2, $3)
+      `;
+
+      db.query(sql, [event_id, relationship_id, event_date]).then((dbRes) => {
+        console.log("API-event-updated")
+        res.sendStatus(200); //everything is okay 
+
+      }).catch((err) => {
+        res.status(500).json({}); //everything is not okay 500 - Internal Server Error - sends message to user
+      });        
+});
 
 module.exports = router;

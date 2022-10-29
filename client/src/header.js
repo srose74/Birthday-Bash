@@ -9,8 +9,8 @@ function Header (){
         <div id="header-nav">
                 <img src={BirthdayLogo} alt="Birthday Logo"/>
                 <ul id="navlist">
-                    <li><Link to="/login">L</Link></li>
-                    <li><Link to="/portal">P</Link></li>    
+                    <li><Link to="/login">Card Generator</Link></li>
+                    <li><Link to="/portal">Gift Portal</Link></li>    
                 </ul>
         </div>
     )

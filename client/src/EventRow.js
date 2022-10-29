@@ -1,12 +1,12 @@
 import './EventRow.css'
+import { Link } from "react-router-dom";
 
-function EventRow( { event, date } ){
-    //console.log("ER-event", event);
-    //console.log("ER-date", date);
-    //const eventDate = new Date("2009-09-28");
-    //console.log("ER-event-date", eventDate);
+function EventRow( { event_id, relationship_id, event, date } ){
+
+    const eventDate = new Date(date);
+    
     return (
-        <button className='EventButton'>{event} : {date}</button>
+            <button className='EventButton'><Link to={`/give-gift/${relationship_id}/${event_id}`}>{event} : {eventDate.toLocaleDateString()}</Link></button>
         )
 }
 

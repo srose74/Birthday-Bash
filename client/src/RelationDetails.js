@@ -4,6 +4,8 @@ import { Rating } from '@mui/material';
 import EventRow from './EventRow';
 import PresentRow from './PresentRow';
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 
 function RelationDetails({ id, events, gifts  }) {
@@ -29,13 +31,15 @@ function RelationDetails({ id, events, gifts  }) {
                         <Rating name="read-only" value={4} readOnly/>
                     </p>
                     <p>
-                        <a href='http://www.google.com'>Create New Event</a>
+                        <Link to={`/event/${relationship_id}/${name}`}>Create New Event</Link>
                     </p> 
                     {events.map((event, index)=>{
                         console.log("RD-occasion", event)
                         return (
                             <EventRow
                                 index={index}
+                                event_id={event.event_id}
+                                relationship_id={event.relationship_id}
                                 event={event.event_type}
                                 date={event.event_date}
                             ></EventRow>

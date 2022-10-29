@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useEffect } from "react";
-import { RELATIONDETAILS } from "./DETAILS";
 import RelationRow from './RelationRow';
 import RelationDetails from './RelationDetails';
 import axios from "axios";
@@ -8,13 +7,15 @@ import axios from "axios";
 import './PresentPortal.css'
 
 function PresentPortal() {
-    const [selectedRelative, setSelectedRelative] = useState(RELATIONDETAILS.details[0]);
+    const [selectedRelative, setSelectedRelative] = useState('');
     const [relationsArray, setRelationsArray] = useState([]);
     const [events, setEvents] = useState([]);
     const [gifts, setGifts] = useState([]);
 
     useEffect(()=>{
         axios.get('api/relations').then((res) => {
+            //set first record in Relation Details
+            setSelectedRelative(res.data[0]);
             res.data.forEach(element => {
                 //console.log("element", element);
                 setRelationsArray((relationsArray) => [...relationsArray, element]);

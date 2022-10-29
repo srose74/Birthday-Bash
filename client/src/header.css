@@ -71,7 +71,7 @@ button:hover {
     margin-right: 10px;
     background-color: #64c6c5;
     color: white;
-    border-radius: 50%;
+    border-radius: 5px;
 }
   
 #navlist > li:hover {
@@ -86,7 +86,7 @@ button:hover {
 #circle-icon {
     background: grey;
     padding:30px;
-    border-radius: 50%;
+    border-radius: 5px;
     list-style: none;
 }
 
