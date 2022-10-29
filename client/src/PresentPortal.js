@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useEffect } from "react";
-import { RELATION } from "./RELATION";
 import { RELATIONDETAILS } from "./DETAILS";
 import RelationRow from './RelationRow';
 import RelationDetails from './RelationDetails';
@@ -24,8 +23,9 @@ function PresentPortal() {
 
     const getSelectedRelation = (event, props) => {
         console.log("GSR-props", props);
-        //console.log("GSR-event", event);
-        setSelectedRelative(RELATIONDETAILS.details[props-1]);
+        axios.get(`api/relationsDetails/${props}`).then((res) => {
+            setSelectedRelative(res.data);
+        })  
     };
 
     return (
