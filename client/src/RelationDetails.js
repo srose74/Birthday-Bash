@@ -6,11 +6,12 @@ import PresentRow from './PresentRow';
 import { useEffect, useState } from "react";
 
 
-function RelationDetails({id}) {
-    //console.log("RD-id", id)
-    const { events, name, picture, rating, relation_type, users_id, presents } = id;
-    //console.log("RD-present", presents)
-    const [selectedRelative, setSelectedRelative] = useState();
+function RelationDetails({ id, events, gifts  }) {
+    
+    const { users_id, name, email, password, picture, relationship_id, gift_giver, gift_receiver, relation_id, relation_type } = id;
+    console.log("RD-events", events);
+    console.log("RD-gifts", gifts);
+
 
     return (
         <div className="RelationDetail is-hydrated">
@@ -25,31 +26,32 @@ function RelationDetails({id}) {
                         {relation_type}
                     </p>
                     <p>
-                        <Rating name="read-only" value={rating} readOnly/>
+                        <Rating name="read-only" value={4} readOnly/>
                     </p>
                     <p>
                         <a href='http://www.google.com'>Create New Event</a>
                     </p> 
-                    {events.map((occasion, index)=>{
-                        console.log("RD-occasion", occasion)
+                    {events.map((event, index)=>{
+                        console.log("RD-occasion", event)
                         return (
                             <EventRow
                                 index={index}
-                                event={occasion.event}
-                                date={occasion.Date}
+                                event={event.event_type}
+                                date={event.event_date}
                             ></EventRow>
                         )
                     })}
                       
                 </div>
             </div>
+
             <div className="Present-details">
-                    {presents.map((present, index) => {
+                    {gifts.map((present, index) => {
                         console.log("RD-present", present)
                              return (
                                  <PresentRow
                                      index={index}
-                                     event={present.event}
+                                     event={present.event_type}
                                      gift_date={present.gift_date}
                                      gift_status={present.gift_status}
                                      present_image={present.present_image}

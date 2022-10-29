@@ -8,9 +8,10 @@ import axios from "axios";
 import './PresentPortal.css'
 
 function PresentPortal() {
-    //console.log("RELATION DETAILS", RELATIONDETAILS.details)
     const [selectedRelative, setSelectedRelative] = useState(RELATIONDETAILS.details[0]);
     const [relationsArray, setRelationsArray] = useState([]);
+    const [events, setEvents] = useState([]);
+    const [gifts, setGifts] = useState([]);
 
     useEffect(()=>{
         axios.get('api/relations').then((res) => {
@@ -23,8 +24,32 @@ function PresentPortal() {
 
     const getSelectedRelation = (event, props) => {
         console.log("GSR-props", props);
+        //set back to zero
+        setEvents([]);
+        setGifts([]);
+        
         axios.get(`api/relationsDetails/${props}`).then((res) => {
-            setSelectedRelative(res.data);
+            //console.log("GSR-relation-details", res.data)
+            setSelectedRelative(res.data[0]);
+
+            //Get relationship_id from relation details
+            const relationship_id = res.data[0].relationship_id;
+
+            //Get gifts for a particular relationship id
+            axios.get(`api/gifts/${relationship_id}`).then((res) => {
+                res.data.forEach(element => {
+                    //console.log("element", element);
+                    setGifts((gifts) => [...gifts, element]);
+                });
+            })
+
+            //Get events for a particular relationship id
+            axios.get(`api/events/${relationship_id}`).then((res) => {
+                res.data.forEach(element => {
+                    //console.log("element", element);
+                    setEvents((events) => [...events, element]);
+                });
+            })
         })  
     };
 
@@ -33,7 +58,7 @@ function PresentPortal() {
 
             <div className="relation-list">
                 {relationsArray.map((relation, index)=>{
-                    console.log("RL", relation);
+                    //console.log("PP-relation-object", relation);
                     return (
                         <RelationRow
                             index={index}
@@ -49,7 +74,11 @@ function PresentPortal() {
             </div>
 
             <div className="relation-details">
-                <RelationDetails id={selectedRelative}/>
+                <RelationDetails 
+                    id={selectedRelative}
+                    events={events}
+                    gifts={gifts}
+                ></RelationDetails>
             </div>    
 
         </div>

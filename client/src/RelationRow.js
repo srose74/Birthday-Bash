@@ -2,7 +2,7 @@ import './RelationRow.css'
 import { Rating } from '@mui/material';
 
 function RelationRow(props) {
-    console.log("RR-props", props);
+    //console.log("RR-props", props);
 
     return (
         <div className="RelationRow">

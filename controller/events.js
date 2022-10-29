@@ -7,7 +7,10 @@ router.get("/api/test", (req, res) => {
     res.json({ result: "success" });
   });
 
-//this route gets a list of relations  
+//this route gets a list of gift_receivers for a particular gift_giver
+//RETURNS ----------->
+//users_id, name, email, password, picture, relationship_id
+//gift_giver, gift_receiver, relation_id, relation_type 
 router.get('/api/relations', (req,res)=>{
 
     const userId = 1; 
@@ -21,7 +24,10 @@ router.get('/api/relations', (req,res)=>{
     });
 })
 
-//this route gets a single relation's details
+//this route gets a given gift_receiver based on a user_id
+//RETURNS ----------->
+//users_id, name, email, password, picture, relationship_id
+//gift_giver, gift_receiver, relation_id, relation_type 
 router.get('/api/relationsDetails/:id', (req, res) => {
     const relation_id = req.params.id;
 
@@ -35,16 +41,36 @@ router.get('/api/relationsDetails/:id', (req, res) => {
   });
 })
 
+//this route gets gifts for a particular relationship_id
+//RETURNS ----------->
+//gift_id, relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating, event_type
 router.get('/api/gifts/:relationship_id', (req,res) => {
     const relationship_id = req.params.relationship_id;
 
     sql = `SELECT * FROM gifts
+           INNER JOIN events on gifts.event_id = events.event_id
            WHERE gifts.relationship_id = $1`;
     
     db.query(sql, [relationship_id]).then((dbRes)=> {
       return res.json(dbRes.rows);
     });       
 })
+
+//this route gets events for a particular gift_receiver (as identified by a relationship_id)
+//RETURNS ----------->
+//date_id, event_id, relationship_id, event_date, event_type
+router.get('/api/events/:relationship_id', (req, res) => {
+  const relationship_id = req.params.relationship_id;
+
+  sql = `SELECT * FROM dates 
+         INNER JOIN events ON dates.event_id = events.event_id 
+         WHERE dates.relationship_id = $1`;
+
+  db.query(sql, [relationship_id]).then((dbRes)=> {
+    return res.json(dbRes.rows);
+  });
+})
+
 
 
 module.exports = router;
