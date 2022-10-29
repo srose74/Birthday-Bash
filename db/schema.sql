@@ -31,12 +31,12 @@ CREATE TABLE gifts (
     relationship_id INTEGER REFERENCES relationship(relationship_id),
     event_id INTEGER REFERENCES events(event_id),
     present_name TEXT NOT NULL,
-    present_cost INTEGER,
     present_image TEXT,
-    present_link TEXT,
     gift_date DATE,
     gift_status TEXT NOT NULL,
-    CHECK (gift_status in ('PENDING', 'GIVEN', 'RATED'))
+    CHECK (gift_status in ('PENDING', 'GIVEN', 'RATED')),
+    rating INTEGER NOT NULL,
+    CHECK (rating BETWEEN 0 AND 5)
 );
 
 CREATE TABLE dates (
@@ -44,11 +44,4 @@ CREATE TABLE dates (
     event_id INTEGER REFERENCES events(event_id),
     relationship_id INTEGER REFERENCES relationship(relationship_id),
     event_date DATE
-);
-
-CREATE TABLE rating (
-    rating_id SERIAL PRIMARY KEY,
-    gift_id INTEGER REFERENCES gifts(gift_id),
-    rating INTEGER NOT NULL,
-    CHECK (rating BETWEEN 1 AND 5)
 );

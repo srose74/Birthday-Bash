@@ -22,7 +22,7 @@ function RelationDetails({id}) {
                     <img src={picture} className="relation-detail-poster" alt={name} />
                     <h1>{name}</h1>
                     <p>
-                        Relationship Type: {relation_type}
+                        {relation_type}
                     </p>
                     <p>
                         <Rating name="read-only" value={rating} readOnly/>

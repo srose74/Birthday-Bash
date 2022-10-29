@@ -4,15 +4,26 @@ import { RELATION } from "./RELATION";
 import { RELATIONDETAILS } from "./DETAILS";
 import RelationRow from './RelationRow';
 import RelationDetails from './RelationDetails';
+import axios from "axios";
 
 import './PresentPortal.css'
 
 function PresentPortal() {
     //console.log("RELATION DETAILS", RELATIONDETAILS.details)
     const [selectedRelative, setSelectedRelative] = useState(RELATIONDETAILS.details[0]);
+    const [relationsArray, setRelationsArray] = useState([]);
+
+    useEffect(()=>{
+        axios.get('api/relations').then((res) => {
+            res.data.forEach(element => {
+                //console.log("element", element);
+                setRelationsArray((relationsArray) => [...relationsArray, element]);
+            });
+        });
+    },[])
 
     const getSelectedRelation = (event, props) => {
-        //console.log("GSR-props", props);
+        console.log("GSR-props", props);
         //console.log("GSR-event", event);
         setSelectedRelative(RELATIONDETAILS.details[props-1]);
     };
@@ -21,8 +32,8 @@ function PresentPortal() {
         <div className="PresentPortal">
 
             <div className="relation-list">
-                {RELATION.relations.map((relation, index)=>{
-                    //console.log(relation);
+                {relationsArray.map((relation, index)=>{
+                    console.log("RL", relation);
                     return (
                         <RelationRow
                             index={index}
