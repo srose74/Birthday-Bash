@@ -85,6 +85,23 @@ router.get('/api/events/:relationship_id', (req, res) => {
   });
 })
 
+//this route gets a gift receiver (as identified by a relationship_id)
+//RETURNS ----------->
+//user_id, username, name, email, password, picture, relationship_id, gift_giver, gift_receiver, relation_id
+router.get('/api/gift-receiver/:relationship_id', (req,res) => {
+  const relationship_id = req.params.relationship_id;
+
+  sql = `SELECT * FROM users 
+         INNER JOIN relationship ON users.users_id = relationship.gift_receiver
+         WHERE relationship.relationship_id = $1`;
+
+  db.query(sql, [relationship_id]).then((dbRes)=> {
+    return res.json(dbRes.rows);
+  });
+})
+
+
+
 //POST APIs -------------------->
 
 router.post('/api/event', (req,res) => {
@@ -96,6 +113,25 @@ router.post('/api/event', (req,res) => {
       `;
 
       db.query(sql, [event_id, relationship_id, event_date]).then((dbRes) => {
+        console.log("API-event-updated")
+        res.sendStatus(200); //everything is okay 
+
+      }).catch((err) => {
+        res.status(500).json({}); //everything is not okay 500 - Internal Server Error - sends message to user
+      });        
+});
+
+
+router.post('/api/gift', (req,res) => {
+  const { relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating } = req.body;
+  console.log("DB", relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating);
+
+  const sql = `
+      INSERT INTO gifts (relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      `;
+
+      db.query(sql, [relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating]).then((dbRes) => {
         console.log("API-event-updated")
         res.sendStatus(200); //everything is okay 
 

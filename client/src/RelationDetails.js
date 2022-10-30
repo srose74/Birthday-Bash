@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 function RelationDetails({ id, events, gifts  }) {
     
     const { users_id, name, email, password, picture, relationship_id, gift_giver, gift_receiver, relation_id, relation_type } = id;
-    console.log("RD-events", events);
-    console.log("RD-gifts", gifts);
+    //console.log("RD-events", events);
+    //console.log("RD-gifts", gifts);
 
 
     return (
@@ -34,7 +34,7 @@ function RelationDetails({ id, events, gifts  }) {
                         <Link to={`/event/${relationship_id}/${name}`}>Create New Event</Link>
                     </p> 
                     {events.map((event, index)=>{
-                        console.log("RD-occasion", event)
+                        //console.log("RD-occasion", event)
                         return (
                             <EventRow
                                 index={index}
@@ -51,7 +51,7 @@ function RelationDetails({ id, events, gifts  }) {
 
             <div className="Present-details">
                     {gifts.map((present, index) => {
-                        console.log("RD-present", present)
+                        //console.log("RD-present", present)
                              return (
                                  <PresentRow
                                      index={index}

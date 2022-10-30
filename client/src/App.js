@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/portal" element={<PresentPortal />} />
-            <Route path="give-gift/:relationship_id/:event_id" element={<GiveGift />} />
+            <Route path="give-gift/:relationship_id/:event_id/:event_type" element={<GiveGift />} />
             <Route path="/event/:relationship_id/:name" element={<AddEvent />} />
             <Route path="*" element={<p>Not found</p>} />
           </Routes>
