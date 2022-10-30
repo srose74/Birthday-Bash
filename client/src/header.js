@@ -10,12 +10,11 @@ import axios from "axios";
 function Header (){
     const [userLoggedIn, setUserLoggedIn] = useState('1');
     const [noGiftsToRate, setNoGiftsToRate] = useState(0);
-    const [userName, setUserName] = useState('');
+    const [userName, setUserName] = useState('Sarah');
 
     useEffect(()=>{
         axios.get(`api/gifts-to-rate/${userLoggedIn}`).then((res) => {
             setNoGiftsToRate(res.data.length);
-            setUserName(res.data[0].name);
         })
     },[])
 
