@@ -15,7 +15,9 @@ function PresentPortal() {
     useEffect(()=>{
         axios.get('api/relations').then((res) => {
             //set first record in Relation Details
+            //console.log("UE-data",res.data[0]);
             setSelectedRelative(res.data[0]);
+                
             res.data.forEach(element => {
                 //console.log("element", element);
                 setRelationsArray((relationsArray) => [...relationsArray, element]);

@@ -104,6 +104,7 @@ router.get('/api/gift-receiver/:relationship_id', (req,res) => {
 
 //POST APIs -------------------->
 
+//add an event to a gift receiver
 router.post('/api/event', (req,res) => {
   const { event_id, relationship_id, event_date } = req.body;
 
@@ -121,7 +122,7 @@ router.post('/api/event', (req,res) => {
       });        
 });
 
-
+//give gift to gift receiver
 router.post('/api/gift', (req,res) => {
   const { relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating } = req.body;
   console.log("DB", relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating);
@@ -138,6 +139,42 @@ router.post('/api/gift', (req,res) => {
       }).catch((err) => {
         res.status(500).json({}); //everything is not okay 500 - Internal Server Error - sends message to user
       });        
+});
+
+//UPDATE APIs -------------------->
+router.put('/api/gift-status/:id', (req,res)=>{
+  const giftId = req.params.id;
+  
+  const sql = `UPDATE gifts SET gift_status='GIVEN' WHERE gift_id = $1`;
+
+  db.query(sql, [giftId]).then(dbRes=>{
+    res.sendStatus(200);
+  }).catch(err =>{
+      res.sendStatus(500)
+  })
+
+});
+
+
+
+//DELETE APIs -------------------->
+
+//delete gift for a particular gift id
+router.delete('/api/gift/:id', (req, res) => {
+  const giftId = req.params.id;
+  //console.log('Deleting gift id:'+ giftId)
+  const queryGift = "SELECT * FROM gifts WHERE gift_id = $1";
+  db.query(queryGift, [giftId]).then((dbRes)=>{
+    if(dbRes.rows.length !== 1){
+      return res.status(404).json({message: 'Gift not found!'})
+    }
+    const sqlGift = `DELETE FROM gifts WHERE gift_id = $1`;
+    db.query(sqlGift,[giftId]).then((dbRes)=>{
+      res.json({});
+    })
+  }).catch(err =>{
+    res.status(500).json({});
+  });
 });
 
 module.exports = router;

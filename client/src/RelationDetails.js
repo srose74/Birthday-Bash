@@ -51,11 +51,12 @@ function RelationDetails({ id, events, gifts  }) {
 
             <div className="Present-details">
                     {gifts.map((present, index) => {
-                        //console.log("RD-present", present)
+                        console.log("RD-present", present)
                              return (
                                  <PresentRow
                                      index={index}
                                      event={present.event_type}
+                                     gift_id={present.gift_id}
                                      gift_date={present.gift_date}
                                      gift_status={present.gift_status}
                                      present_image={present.present_image}
