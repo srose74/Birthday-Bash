@@ -2,11 +2,13 @@ import './PresentRow.css'
 import { imageListClasses, Rating } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { useState } from 'react';
 
 
 function PresentRow({ event, gift_id, present_image, present_name, gift_date, gift_status }){
     //console.log("PR-props", event, present_image, present_name, gift_date, gift_status)
     const eventDate = new Date(gift_date);
+    const [buttonText, setButtonText] = useState('');
 
     //Navigate to another page
     const navigate = useNavigate();
@@ -44,7 +46,7 @@ function PresentRow({ event, gift_id, present_image, present_name, gift_date, gi
                 <p>For: {event} </p>
                 <p>Gift date: {eventDate.toLocaleDateString()}</p>
                 <button onClick={updateGiftStatus} className="EventButton">{gift_status}</button>
-                <button onClick={removeGift} className="EventButton">REMOVE</button>
+                <button onClick={removeGift} className={gift_status === 'PENDING'?"EventButton":"RemoveButton"}>REMOVE</button>
             </div>
     )
 }

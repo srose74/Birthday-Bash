@@ -13,9 +13,10 @@ router.get("/api/test", (req, res) => {
 //RETURNS ----------->
 //users_id, name, email, password, picture, relationship_id
 //gift_giver, gift_receiver, relation_id, relation_type 
-router.get('/api/relations', (req,res)=>{
+router.get('/api/relations/:userId', (req,res)=>{
+    
+  const userId = req.params.userId;
 
-    const userId = 1; 
     const sql=`SELECT * FROM users
                INNER JOIN relationship ON users.users_id = relationship.gift_receiver
                INNER JOIN relation ON relationship.relation_id = relation.relation_id
@@ -100,7 +101,22 @@ router.get('/api/gift-receiver/:relationship_id', (req,res) => {
   });
 })
 
+//this route gets a gifts with a status of given (as identified by a users_id)
+//RETURNS ----------->
+//gift_id, relationship_id, event_id, present_name, present_image, gift_date, gift_status = GIVEN, rating, gift_giver, gift_receiver = users_id, relation_id
+router.get('/api/gifts-to-rate/:users_id', (req,res) => {
+  const users_id = req.params.users_id;
 
+  sql = `SELECT * FROM gifts
+         INNER JOIN relationship ON gifts.relationship_id = relationship.relationship_id
+         INNER JOIN users ON relationship.gift_receiver = users.users_id
+         WHERE relationship.gift_receiver = $1 
+         AND gifts.gift_status = 'GIVEN'`;
+  
+  db.query(sql, [users_id]).then((dbRes)=> {
+      return res.json(dbRes.rows);
+  });
+})
 
 //POST APIs -------------------->
 

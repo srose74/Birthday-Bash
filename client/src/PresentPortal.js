@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from "react";
 import RelationRow from './RelationRow';
 import RelationDetails from './RelationDetails';
+import RateGift from './RateGift';
 import axios from "axios";
 
 import './PresentPortal.css'
@@ -11,9 +12,10 @@ function PresentPortal() {
     const [relationsArray, setRelationsArray] = useState([]);
     const [events, setEvents] = useState([]);
     const [gifts, setGifts] = useState([]);
+    const [userLoggedIn, setUserLoggedIn] = useState('1');
 
     useEffect(()=>{
-        axios.get('api/relations').then((res) => {
+        axios.get(`api/relations/${userLoggedIn}`).then((res) => {
             //set first record in Relation Details
             //console.log("UE-data",res.data[0]);
             setSelectedRelative(res.data[0]);
@@ -23,6 +25,7 @@ function PresentPortal() {
                 setRelationsArray((relationsArray) => [...relationsArray, element]);
             });
         });
+
     },[])
 
     const getSelectedRelation = (event, props) => {

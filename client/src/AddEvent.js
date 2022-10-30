@@ -63,7 +63,8 @@ function AddEvent( ){
                     <form>
                       
                             <label>Select an event type:
-                            <select name="event_type" onChange={(e) => setEventId(e.target.value)}>   
+                            <select name="event_type" onChange={(e) => setEventId(e.target.value)}>
+                                <option value={0}>Select from drop-down list</option>   
                                 {eventArray.map((event, index)=>{
                                     return (
                                         <AddEvenList
