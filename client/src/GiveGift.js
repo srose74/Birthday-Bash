@@ -48,8 +48,6 @@ function GiveGift( ){
             rating: rating
         }
 
-        console.log("Front End Data", data);
-
          axios
          .post('/api/gift', data)
          .then(navigate('/portal'))

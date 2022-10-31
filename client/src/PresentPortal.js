@@ -13,6 +13,7 @@ function PresentPortal() {
     const [events, setEvents] = useState([]);
     const [gifts, setGifts] = useState([]);
     const [userLoggedIn, setUserLoggedIn] = useState('1');
+    const [averageRating, setAverageRating] = useState(0);
 
     useEffect(()=>{
         axios.get(`api/relations/${userLoggedIn}`).then((res) => {
@@ -29,7 +30,7 @@ function PresentPortal() {
     },[])
 
     const getSelectedRelation = (event, props) => {
-        console.log("GSR-props", props);
+        //console.log("GSR-props", props);
         //set back to zero
         setEvents([]);
         setGifts([]);
@@ -43,10 +44,20 @@ function PresentPortal() {
 
             //Get gifts for a particular relationship id
             axios.get(`api/gifts/${relationship_id}`).then((res) => {
+                
+                let total = 0;
+                let count = 0;
+
                 res.data.forEach(element => {
                     //console.log("element", element);
                     setGifts((gifts) => [...gifts, element]);
+
+                    if (element.gift_status === 'RATED'){
+                        total = total + element.rating;
+                        count ++;
+                    }
                 });
+                setAverageRating(total/count);
             })
 
             //Get events for a particular relationship id
@@ -84,6 +95,7 @@ function PresentPortal() {
                     id={selectedRelative}
                     events={events}
                     gifts={gifts}
+                    averageRating={averageRating}
                 ></RelationDetails>
             </div>    
 

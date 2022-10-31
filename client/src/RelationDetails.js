@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 
 
 
-function RelationDetails({ id, events, gifts  }) {
+function RelationDetails({ id, events, gifts, averageRating  }) {
     
     const { users_id, name, email, password, picture, relationship_id, gift_giver, gift_receiver, relation_id, relation_type } = id;
     //console.log("RD-events", events);
     //console.log("RD-gifts", gifts);
-
+    console.log(averageRating);
 
     return (
         <div className="RelationDetail is-hydrated">
@@ -28,7 +28,7 @@ function RelationDetails({ id, events, gifts  }) {
                         {relation_type}
                     </p>
                     <p>
-                        <Rating name="read-only" value={4} readOnly/>
+                        <Rating name="half-rating-read" value={averageRating} precision={0.5} readOnly />
                     </p>
                     <p>
                         <Link to={`/event/${relationship_id}/${name}`}>Create New Event</Link>
@@ -51,7 +51,7 @@ function RelationDetails({ id, events, gifts  }) {
 
             <div className="Present-details">
                     {gifts.map((present, index) => {
-                        console.log("RD-present", present)
+                        //console.log("RD-present", present)
                              return (
                                  <PresentRow
                                      index={index}
@@ -61,6 +61,7 @@ function RelationDetails({ id, events, gifts  }) {
                                      gift_status={present.gift_status}
                                      present_image={present.present_image}
                                      present_name={present.present_name}
+                                     rating={present.rating}
                                  ></PresentRow> 
                              )    
          
@@ -70,4 +71,4 @@ function RelationDetails({ id, events, gifts  }) {
     )
 }
 
-export default RelationDetails
+export default RelationDetails;

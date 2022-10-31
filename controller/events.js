@@ -141,7 +141,7 @@ router.post('/api/event', (req,res) => {
 //give gift to gift receiver
 router.post('/api/gift', (req,res) => {
   const { relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating } = req.body;
-  console.log("DB", relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating);
+  //console.log("DB", relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating);
 
   const sql = `
       INSERT INTO gifts (relationship_id, event_id, present_name, present_image, gift_date, gift_status, rating)
@@ -164,10 +164,29 @@ router.put('/api/gift-status/:id', (req,res)=>{
   const sql = `UPDATE gifts SET gift_status='GIVEN' WHERE gift_id = $1`;
 
   db.query(sql, [giftId]).then(dbRes=>{
-    res.sendStatus(200);
+      res.sendStatus(200);
   }).catch(err =>{
-      res.sendStatus(500)
+      res.sendStatus(500);
   })
+});
+
+router.put('/api/rating', (req,res) => {
+    //console.log("API-put-rating", req.body);
+    const ratingArray = req.body;
+    
+    const sql = `UPDATE gifts 
+                SET gift_status='RATED', rating=$1 
+                WHERE gift_id = $2`;
+    
+    ratingArray.forEach(element => {
+      db.query(sql, [element.rating, element.gift_id]).then(dbRes=>{
+          res.sendStatus(200);
+      }).catch(err =>{
+          res.sendStatus(500);
+      })
+    });
+  
+
 
 });
 

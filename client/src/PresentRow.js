@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState } from 'react';
 
 
-function PresentRow({ event, gift_id, present_image, present_name, gift_date, gift_status }){
+function PresentRow({ event, gift_id, present_image, present_name, gift_date, gift_status, rating }){
     //console.log("PR-props", event, present_image, present_name, gift_date, gift_status)
     const eventDate = new Date(gift_date);
     const [buttonText, setButtonText] = useState('');
@@ -28,7 +28,7 @@ function PresentRow({ event, gift_id, present_image, present_name, gift_date, gi
 
     const updateGiftStatus = () => {
         axios.put(`/api/gift-status/${gift_id}`).then ((res)=>{
-            console.log("Gift Status Updated", gift_id);
+            //console.log("Gift Status Updated", gift_id);
             navigate('/portal');
         }).catch((err)=>{
             if(err.response.status === 500){
@@ -45,6 +45,7 @@ function PresentRow({ event, gift_id, present_image, present_name, gift_date, gi
                 <h5>{present_name}</h5>
                 <p>For: {event} </p>
                 <p>Gift date: {eventDate.toLocaleDateString()}</p>
+                <p><Rating name="read-only" value={rating} readOnly/></p>
                 <button onClick={updateGiftStatus} className="EventButton">{gift_status}</button>
                 <button onClick={removeGift} className={gift_status === 'PENDING'?"EventButton":"RemoveButton"}>REMOVE</button>
             </div>
