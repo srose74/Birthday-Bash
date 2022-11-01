@@ -30,6 +30,8 @@ Sarah Rose
 2. Alerts and notifications, events due this month
 3. Login Functionality
 4. Filter by Birthdays, Anniversaries, Christmas etc
+5. Responsive Web Page
+6. Home Page, etc.
 
 ## Bugs
 
