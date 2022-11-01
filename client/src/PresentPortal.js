@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useEffect } from "react";
 import RelationRow from './RelationRow';
 import RelationDetails from './RelationDetails';
-import RateGift from './RateGift';
 import axios from "axios";
 
 import './PresentPortal.css'
@@ -16,6 +15,7 @@ function PresentPortal() {
     const [averageRating, setAverageRating] = useState(0);
 
     useEffect(()=>{
+        
         axios.get(`api/relations/${userLoggedIn}`).then((res) => {
             //set first record in Relation Details
             //console.log("UE-data",res.data[0]);
@@ -26,7 +26,6 @@ function PresentPortal() {
                 setRelationsArray((relationsArray) => [...relationsArray, element]);
             });
         });
-
     },[])
 
     const getSelectedRelation = (event, props) => {
@@ -75,7 +74,7 @@ function PresentPortal() {
 
             <div className="relation-list">
                 {relationsArray.map((relation, index)=>{
-                    //console.log("PP-relation-object", relation);
+                    console.log("PP-relation-object", relation);
                     return (
                         <RelationRow
                             index={index}
@@ -83,7 +82,6 @@ function PresentPortal() {
                             name={relation.name}
                             picture={relation.picture}
                             relation_type={relation.relation_type}
-                            rating={relation.rating}
                             setRelation={getSelectedRelation}
                         ></RelationRow>
                     );

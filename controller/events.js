@@ -118,6 +118,23 @@ router.get('/api/gifts-to-rate/:users_id', (req,res) => {
   });
 })
 
+//this route gets a birthdate of a gift receiver (as identified by a users_id)
+//RETURNS ----------->
+//event_date from dates
+router.get('/api/birthdate/:users_id', (req, res)=> {
+  const users_id = req.params.users_id;
+
+  sql = `SELECT event_date FROM dates
+         INNER JOIN relationship ON dates.relationship_id = relationship.relationship_id
+         WHERE dates.event_id = '1'
+         AND relationship.gift_receiver = $1`;
+  
+  db.query(sql, [users_id]).then((dbRes)=> {
+        return res.json(dbRes.rows);
+  });
+
+})
+
 //POST APIs -------------------->
 
 //add an event to a gift receiver

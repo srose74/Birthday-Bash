@@ -1,15 +1,13 @@
 import './PresentRow.css'
-import { imageListClasses, Rating } from '@mui/material';
+import { Rating } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { useState } from 'react';
 
 
 function PresentRow({ event, gift_id, present_image, present_name, gift_date, gift_status, rating }){
     //console.log("PR-props", event, present_image, present_name, gift_date, gift_status)
     const eventDate = new Date(gift_date);
-    const [buttonText, setButtonText] = useState('');
-
+    
     //Navigate to another page
     const navigate = useNavigate();
 
