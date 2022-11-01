@@ -7,21 +7,21 @@ function RelationRow(props) {
     const [month, setMonth] = useState();
     const [link, setLink] = useState('');
 
-    useEffect(()=>{
-        axios.get(`api/birthdate/${props.id}`).then((res) => {
+     useEffect(()=>{
+         axios.get(`api/birthdate/${props.id}`).then((res) => {
             
-            const birthdate = new Date(res.data[0].event_date);
-            const strBirthdate = birthdate.toLocaleDateString();
-            setDay(parseInt(strBirthdate.slice(0,2)));
-            setMonth(parseInt(strBirthdate.slice(3,5)));
+             const birthdate = new Date(res.data[0].event_date);
+             const strBirthdate = birthdate.toLocaleDateString();
+             setDay(parseInt(strBirthdate.slice(0,2)));
+             setMonth(parseInt(strBirthdate.slice(3,5)));
    
-        });
+         });
 
-        axios.get(`https://byabbe.se/on-this-day/${month}/${day}/events.json`).then((res)=> {
-            setLink(res.data.wikipedia);
-        })
+         axios.get(`https://byabbe.se/on-this-day/${month}/${day}/events.json`).then((res)=> {
+             setLink(res.data.wikipedia);
+         })
 
-    })
+     })
 
     return (
         <div className="RelationRow">

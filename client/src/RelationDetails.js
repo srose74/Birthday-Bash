@@ -17,17 +17,6 @@ function RelationDetails({ id, events, gifts, averageRating  }) {
     
     const [wikipediaLink, setLink] = useState('');
 
-     useEffect(() => {
-
-        const month = 10;
-        const day = 8;
-        const onThisDay = `https://byabbe.se/on-this-day/${month}/${day}/events.json`;
-
-         axios.get(onThisDay).then((res)=> {
-             setLink(res.data.wikipedia);
-         })
-     })
-
     return (
         <div className="RelationDetail is-hydrated">
             <figure className="relation-backdrop">

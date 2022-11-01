@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 function Header (){
-    const [userLoggedIn, setUserLoggedIn] = useState('1');
+    const [userLoggedIn, setUserLoggedIn] = useState('2');
     const [noGiftsToRate, setNoGiftsToRate] = useState(0);
     const [userName, setUserName] = useState('');
 
@@ -25,7 +25,6 @@ function Header (){
         <div id="header-nav">
                 <img src={BirthdayLogo} alt="Birthday Logo"/>
                 <ul id="navlist">
-                    <li><Link to="/login">Card Generator</Link></li>
                     <li><Link to="/portal">Gift Portal</Link></li> 
                     <li><Link to={`/rate-gift/${userLoggedIn}`}>You have {noGiftsToRate} gift/s to rate!</Link></li>
                     <li>{userName}</li> 

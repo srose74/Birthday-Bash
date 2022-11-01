@@ -25,3 +25,13 @@ Sarah Rose
     - Postgres SQL
 
 ## Product Roadmap
+
+1. Gift-Giver Rating (for all gifts given)
+2. Alerts and notifications, events due this month
+3. Login Functionality
+4. Filter by Birthdays, Anniversaries, Christmas etc
+
+## Bugs
+
+1. React Components Render Twice when working locally
+
