@@ -7,18 +7,14 @@ import axios from "axios";
 
 
 function Header (){
-    const [userLoggedIn, setUserLoggedIn] = useState('2');
+    const [userLoggedIn, setUserLoggedIn] = useState('1');
     const [noGiftsToRate, setNoGiftsToRate] = useState(0);
-    const [userName, setUserName] = useState('');
+    const [userName, setUserName] = useState('Sarah');
 
     useEffect(()=>{
         axios.get(`api/gifts-to-rate/${userLoggedIn}`).then((res) => {
             setNoGiftsToRate(res.data.length);
         })
-
-        //Toggle User Name
-        setUserName('Sarah');
-        setUserLoggedIn('1');
     },[])
 
     return (
